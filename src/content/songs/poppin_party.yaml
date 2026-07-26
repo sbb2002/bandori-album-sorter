@@ -277,7 +277,7 @@
       name: 'とっておきAnswer'
       url: https://youtu.be/uOdEmtdzblA
     - track_number: '2025-12-25'
-      name: 'START!! True dreams'
+      name: 'START!! True dreams (Cover)'
       url: https://youtu.be/SQ_-nPf-SNI
     - track_number: '2026-04-28'
       name: 'どきどきデエト'
@@ -411,3 +411,6 @@
     - track_number: '2025-02-27'
       name: '空色デイズ (Cover)'
       url: https://youtu.be/Z42iAtQpMNs
+    - track_number: 'X0'
+      name: '乙女はサイコパス (Cover)'
+      url: https://youtu.be/pFNrfao3dXg

@@ -6256,6 +6256,375 @@
             "x": -50.32,
             "y": 28.29,
             "bpm": 129.2
+        },
+        {
+            "band": "morfonica",
+            "song": "深海少女 (Cover)",
+            "url": "https://youtu.be/8McGbxeGqdY",
+            "x": -21.36,
+            "y": -27.98,
+            "bpm": 136.0,
+            "energy": 0.5
+        },
+        {
+            "band": "poppin_party",
+            "song": "乙女はサイコパス (Cover)",
+            "url": "https://youtu.be/pFNrfao3dXg",
+            "x": -5.4,
+            "y": 53.33,
+            "bpm": 112.3,
+            "energy": 0.5
+        },
+        {
+            "band": "roselia",
+            "song": "擬態ごっこ (Cover)",
+            "url": "https://youtu.be/-3HDhazL-FA",
+            "x": 14.01,
+            "y": -14.61,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "等身大あんりみてっど",
+            "url": "https://youtu.be/XbqG3T4MGJE",
+            "x": 6.15,
+            "y": -7.49,
+            "bpm": 117.5,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "好きになっちゃえ！",
+            "url": "https://youtu.be/mhmXN1uZTzE",
+            "x": 26.11,
+            "y": 37.05,
+            "bpm": 136.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "YoU kNOw the overture",
+            "url": "https://youtu.be/UWHzX6SpizM",
+            "x": 22.72,
+            "y": -8.64,
+            "bpm": 117.5,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "君が飛び降りるのならば (Cover)",
+            "url": "https://youtu.be/BI71vana4VI",
+            "x": 23.61,
+            "y": 29.24,
+            "bpm": 103.4,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "地球最後の告白を (Cover)",
+            "url": "https://youtu.be/7R1DMU0qa00",
+            "x": 3.06,
+            "y": 24.88,
+            "bpm": 95.7,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "パラレルラルラ (Cover)",
+            "url": "https://youtu.be/ZcY2a1DyVAo",
+            "x": 3.28,
+            "y": 29.74,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "夜もすがら君想ふ (Cover)",
+            "url": "https://youtu.be/OsJPJo4uKBc",
+            "x": -6.06,
+            "y": 38.63,
+            "bpm": 99.4,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ジレンマ (Cover)",
+            "url": "https://youtu.be/3M5YaHlpMjY",
+            "x": 9.73,
+            "y": 43.92,
+            "bpm": 123.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "glow (Cover)",
+            "url": "https://youtu.be/WS4flpVYkLg",
+            "x": -70.0,
+            "y": 31.71,
+            "bpm": 172.3,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "メンタルチェンソー (Cover)",
+            "url": "https://youtu.be/eI-BW0Bcq4g",
+            "x": 39.75,
+            "y": -18.01,
+            "bpm": 123.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ホシアイ (Cover)",
+            "url": "https://youtu.be/d6n4WHEtAgE",
+            "x": -23.66,
+            "y": 42.64,
+            "bpm": 161.5,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "フォニイ (Cover)",
+            "url": "https://youtu.be/0makuFTnChs",
+            "x": 9.17,
+            "y": 0.11,
+            "bpm": 112.3,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ELECT (Cover)",
+            "url": "https://youtu.be/uaAIGOd9Qv0",
+            "x": 16.19,
+            "y": 13.5,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ユキトキ (Cover)",
+            "url": "https://youtu.be/LXYyBjnbQys",
+            "x": -24.68,
+            "y": 17.39,
+            "bpm": 112.3,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "スイートマジック (Cover)",
+            "url": "https://youtu.be/PsPtBzaevyA",
+            "x": 14.92,
+            "y": 9.32,
+            "bpm": 123.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "少年よ我に帰れ (Cover)",
+            "url": "https://youtu.be/2TtYsm1HDx8",
+            "x": -70.0,
+            "y": -1.15,
+            "bpm": 117.5,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "One Last Kiss (Cover)",
+            "url": "https://youtu.be/fyc4aGZ9C18",
+            "x": -46.29,
+            "y": -5.32,
+            "bpm": 112.3,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ミルククラウン・オン・ソーネチカ (Cover)",
+            "url": "https://youtu.be/yHMLvqxh2PQ",
+            "x": -12.32,
+            "y": 21.67,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "決戦スピリット (Cover)",
+            "url": "https://youtu.be/i-cgqBosaDw",
+            "x": -7.11,
+            "y": 21.41,
+            "bpm": 95.7,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ティアドロップス (Cover)",
+            "url": "https://youtu.be/gZe2UGwld2E",
+            "x": 34.14,
+            "y": -18.76,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ロウワー (Cover)",
+            "url": "https://youtu.be/FhaynKrmQro",
+            "x": 10.33,
+            "y": -2.55,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ハイドアンド・シーク (Cover)",
+            "url": "https://youtu.be/FvLSUJ35qmE",
+            "x": -69.47,
+            "y": -16.95,
+            "bpm": 136.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "不可解 (Cover)",
+            "url": "https://youtu.be/YHfBJMxWSec",
+            "x": -36.95,
+            "y": 32.44,
+            "bpm": 136.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "GURU (Cover)",
+            "url": "https://youtu.be/D7M1eAnroZE",
+            "x": 65.18,
+            "y": 29.47,
+            "bpm": 136.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "経験値上昇中☆ (Cover)",
+            "url": "https://youtu.be/e15grxDKfF8",
+            "x": -10.0,
+            "y": -2.19,
+            "bpm": 112.3,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "翼をください (Cover)",
+            "url": "https://youtu.be/RGByUSGhQgE",
+            "x": -70.0,
+            "y": 46.45,
+            "bpm": 161.5,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "元気を出して (Cover)",
+            "url": "https://youtu.be/RzgsdgCkFjU",
+            "x": -70.0,
+            "y": 1.83,
+            "bpm": 92.3,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ハッピー☆マテリアル (Cover)",
+            "url": "https://youtu.be/yLj0VCQC8qE",
+            "x": -23.14,
+            "y": 6.37,
+            "bpm": 107.7,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "時をかける少女 (Cover)",
+            "url": "https://youtu.be/XEzZRDCZBSc",
+            "x": -70.0,
+            "y": -11.01,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "TOMORROW (Cover)",
+            "url": "https://youtu.be/_WXK_IB4cck",
+            "x": -63.46,
+            "y": 40.69,
+            "bpm": 107.7,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "PARTY☆NIGHT（D-POP version） (Cover)",
+            "url": "https://youtu.be/tdZgnk1nEG4",
+            "x": -16.71,
+            "y": 28.33,
+            "bpm": 143.6,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "CH4NGE (Cover)",
+            "url": "https://youtu.be/ivfYQxQBiXQ",
+            "x": 27.07,
+            "y": 18.11,
+            "bpm": 117.5,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "絶え間なく藍色 (Cover)",
+            "url": "https://youtu.be/bLIW2klD4Ms",
+            "x": -7.91,
+            "y": -4.92,
+            "bpm": 123.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "撫でんな (Cover)",
+            "url": "https://youtu.be/tZzToEEZjgo",
+            "x": -12.32,
+            "y": 19.78,
+            "bpm": 143.6,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "なにやってもうまくいかない (Cover)",
+            "url": "https://youtu.be/9Ba8G_i4dAg",
+            "x": 12.39,
+            "y": -16.38,
+            "bpm": 123.0,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "マーシャル・マキシマイザー (Cover)",
+            "url": "https://youtu.be/Gc7vzpnIYSU",
+            "x": 11.64,
+            "y": 15.71,
+            "bpm": 95.7,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "ZEAL of proud (Cover)",
+            "url": "https://youtu.be/4MPXhnbf29o",
+            "x": 16.65,
+            "y": -19.01,
+            "bpm": 129.2,
+            "energy": 0.5
+        },
+        {
+            "band": "mugendai_mutype",
+            "song": "繰り返し一粒 (Cover)",
+            "url": "https://youtu.be/xjGwcPHPAo8",
+            "x": -10.62,
+            "y": 24.54,
+            "bpm": 117.5,
+            "energy": 0.5
         }
     ],
     "centroids": [
