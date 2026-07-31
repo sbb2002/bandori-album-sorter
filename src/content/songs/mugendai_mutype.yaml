@@ -93,6 +93,12 @@
     - track_number: 'X0'
       name: 'YoU kNOw the overture'
       url: https://youtu.be/UWHzX6SpizM
+    - track_number: '2026-07-30'
+      name: 'Face The Next'
+      url: https://youtu.be/6PpzqcesklA
+    - track_number: '2026-07-30'
+      name: 'TearJerker'
+      url: https://youtu.be/T8ynAJWmPtM
 
 - band: 'mugendai_mutype'
   numbering: 'Cover'
