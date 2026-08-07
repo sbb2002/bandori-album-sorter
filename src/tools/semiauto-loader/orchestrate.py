@@ -267,7 +267,11 @@ def _notify_text(candidates: list[dict], anomalies: list[str]) -> str:
     if anomalies:
         lines += ["", f"⚠️ 파싱 이상 밴드: {', '.join(anomalies)}"]
     if candidates:
-        lines += ["", "→ 로컬에서 `python src/tools/semiauto-loader/run_local.py` 실행"]
+        lines += ["", "→ ① bandori-song-sorter: "
+                       "`python src/tools/semiauto-loader/run_local.py` 실행",
+                  "→ ② (① 완료 후) bandori-playlist-maker: "
+                       "`python <bpm-tools>/auto-loader/autoloader/run_autoloader.py "
+                       "--repo-root <bpm-data-branch>` 실행"]
     return "\n".join(lines)
 
 
