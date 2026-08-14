@@ -102,6 +102,9 @@
     - track_number: '2026-08-06'
       name: '一番のひかり'
       url: https://youtu.be/9YjehFo3hAw
+    - track_number: '2026-08-13'
+      name: 'うちゅうのふしぎ'
+      url: https://youtu.be/TedsUWY90Vs
 
 - band: 'mugendai_mutype'
   numbering: 'Cover'
