@@ -9,3 +9,12 @@
     - track_number: '2026-07-18'
       name: 'カーネーションの咲く日に'
       url: https://youtu.be/-CFoE43oPOk
+
+- band: 'millsage'
+  numbering: 'Cover'
+  album_title: 'Covers'
+  img_url: assets/icons/_fallback.png
+  tracks:
+    - track_number: '2026-08-20'
+      name: 'unravel (Cover)'
+      url: https://youtu.be/uZh2qHvJFTI
