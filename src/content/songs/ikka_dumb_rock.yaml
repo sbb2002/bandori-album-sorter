@@ -9,3 +9,12 @@
     - track_number: '2026-07-19'
       name: 'Keep on Riddim'
       url: https://youtu.be/h0QJo5XjosA
+
+- band: 'ikka_dumb_rock'
+  numbering: 'Cover'
+  album_title: 'Covers'
+  img_url: assets/icons/_fallback.png
+  tracks:
+    - track_number: '2026-08-28'
+      name: 'イケナイ太陽 (Cover)'
+      url: https://youtu.be/Gwwcu8sSIkM
