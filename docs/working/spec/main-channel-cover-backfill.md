@@ -208,3 +208,34 @@ python backfill.py mugendai_mutype
    `origin/main` diff로 이 8곡을 자동 감지 — 그쪽은 **아무 코드 변경도 필요 없다**
    (`sources.py`의 `detect_new`가 video_id 기준으로 이미 처리).
 5. 나머지 11개 밴드의 메인 채널 id 조사는 별도 작업으로 분리(이번 범위 아님).
+
+---
+
+## 2026-08-30 업데이트 — 12밴드 메인 채널 전수 조사 + 마커 확장
+
+위 5번("나머지 밴드 메인 채널 id 조사")을 수행했다. YouTube Data API `search.list`(type=channel)
++ `channels.list`(snippet/statistics)로 12밴드 전부 조사(스크래치패드 `find_ofc_channels.py`).
+
+**결과 — 자체 업로드 채널을 가진 밴드는 신생 5개뿐:**
+
+| 밴드 | 메인 채널 | 핸들 | 업로드 | 상태 |
+|---|---|---|---|---|
+| mygo | UC80p_16pSSHA8YmtCVdX51w | @bang_dream_mygo | 많음 | 기등록 |
+| ave_mujica | UCrWC59UUMETuCp9IYUdjVbg | @bang_dream_avemujica | 41 | 기등록 |
+| mugendai_mutype | UCxL_Vlnhfo46sN6vPHR_4hA | @bdp_yumemita | 264 | 기등록 |
+| **ikka_dumb_rock** | **UCCMYC-gp-EQgz9scK4PLYzA** | @dumbrock_ofc | 34 | **이번 추가** |
+| **millsage** | **UCvhViFXvb5Y83YGEpRX1cvg** | @millsage_ofc | 29 | **이번 추가** |
+
+**기성 7밴드(afterglow·roselia·hello_happy_world·morfonica·poppin_party·raise_a_suilen·
+pastel_palettes)**: `@*_oac`("Official Artist Channel") 페이지는 존재하나 **업로드 0개**인
+집계 전용 허브. 실제 커버·라이브는 통합 채널 "バンドリちゃんねる☆"(UCN-bFIdJM0gQlgX7h6LKcZA)에
+올라간다 → 밴드·멤버 판별 로직이 필요해 이번에도 미등록(후속 작업).
+
+**마커 확장**: `_COVER_SERIES_MARKERS`에 `カバー` 추가, `_COVER_SERIES_MARKERS_CI`(대소문자 무시)에
+`covered by` 추가. 근거 = ikka_dumb_rock의 커버 제목 `「イケナイ太陽」 Covered by 一家Dumb Rock!`
+가 `歌ってみた` 없이 `Covered by`만 씀. `cover` 단독은 discover/cover art 등 오탐 위험이라 제외.
+
+**백필 대상 없음**: 조사 시점 기준 ikka_dumb_rock 메인 채널의 커버는 `イケナイ太陽 (Cover)`
+1곡뿐이고 이미 수동 반영됨(sibling idx 741, `8e3349d`). millsage 메인 채널은 커버 0곡
+(커버는 Topic 채널 경로로 들어옴). `backfill.py mygo ave_mujica mugendai_mutype ikka_dumb_rock
+millsage` 실행 결과 신규 후보 0 — 회귀·오탐 없음 확인.
