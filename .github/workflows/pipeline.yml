@@ -5,12 +5,14 @@ name: New-song loader (commands + detect + notify)
 # 이 크론이 분리돼 있어 "명령 수신 → 파이프라인 기동 → 결과 알림"이 한 실행으로 이어지지
 # 않았음 — 폴러 제거, 명령 처리를 이 크론 맨 앞으로 흡수.)
 # 실행 시각은 23:00 KST → 00:10 KST로 변경(2026-07-19): 신곡이 보통 자정 무렵 올라온다는 제보 반영.
+# 00:10 KST → 18:10 KST로 재변경(2026-09-05): GitHub Actions 크론 지연으로 실제 도착이 03:20 KST까지
+# 밀리는 현상 확인 → 더 이른 시간대로 이동해 지연 여유를 확보.
 # CI(데이터센터 IP)에서 YouTube 다운로드는 봇월로 불가함이 실증됨(세션 27, E2E 3회 hard-block)
 # → 이 워크플로우는 **명령 처리 + 감지 + Telegram 알림만** 한다.
 # 실제 다운로드~main 반영은 로컬 원커맨드(src/tools/semiauto-loader/run_local.py)가 집(레지덴셜) IP에서 수행.
 on:
   schedule:
-    - cron: '10 15 * * *'      # 00:10 KST
+    - cron: '10 9 * * *'       # 18:10 KST
   workflow_dispatch:
     inputs:
       notify_test:
