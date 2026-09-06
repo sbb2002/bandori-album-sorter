@@ -21,12 +21,12 @@ docs/working/spec/main-channel-cover-backfill.md
   python src/tools/collect/backfill.py roselia    # 특정 밴드만(공백 구분 다수 가능)
 """
 import sys
-import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from youtube_rss import (video_id, norm_name, variant_tag, KEEP_VARIANTS,
-                         BAND_CHANNELS, WATCH_SHORT, load_existing,
+                         BAND_CHANNELS, BAND_MAIN_CHANNELS, is_cover_series_title,
+                         WATCH_SHORT, load_existing,
                          fetch_length_seconds, MIN_LENGTH_S)
 from youtube_api import load_env_key, fetch_uploads, APIError
 
@@ -36,51 +36,9 @@ except Exception:
     pass
 
 
-# ──────────────────────────────────────────────
-# 메인 채널 설정 (歌ってみた 화이트리스트)
-# ──────────────────────────────────────────────
-
-# 밴드의 메인(공식) 채널 — Topic 채널과 별개. mugendai_mutype(2026-07-25 확인)에 이어
-# mygo·ave_mujica 추가(2026-07-25, channels.list로 videoCount 실측 검증 완료 — 415/38개).
-# ikka_dumb_rock·millsage 추가(2026-08-30, Data API search+channels.list로 검증):
-#   - ikka_dumb_rock = UCCMYC-gp-EQgz9scK4PLYzA (@dumbrock_ofc, 업로드 34개, 공식 설명
-#     "「バンドリ！」から生まれた新バンド「一家Dumb Rock!」の公式YouTubeチャンネル")
-#   - millsage       = UCvhViFXvb5Y83YGEpRX1cvg (@millsage_ofc, 업로드 29개, 공식 설명
-#     "バンドリ！から生まれた新バンド「millsage」公式YouTubeチャンネル")
-# 신생 5밴드(mygo·ave_mujica·mugendai_mutype·ikka_dumb_rock·millsage)만 자체 업로드 채널을
-# 갖는다. 기성 7밴드(afterglow·roselia·hello_happy_world·morfonica·poppin_party·
-# raise_a_suilen·pastel_palettes)는 "Official Artist Channel"(@*_oac)이 있으나 업로드가
-# 0개인 집계 전용 허브이고, 실제 커버·라이브 등은 통합 채널 "バンドリちゃんねる☆"
-# (UCN-bFIdJM0gQlgX7h6LKcZA)에 올라간다 — 밴드·멤버 판별 로직이 별도로 필요해 여기 미등록
-# (후속 작업). 여기 추가하기 전에 반드시 YouTube Data API channels.list 등으로 실제 채널이
-# 맞는지 확인할 것(추측 금지, 잘못된 채널을 넣으면 엉뚱한 콘텐츠가 그 밴드 데이터로 잘못
-# 들어갈 위험).
-BAND_MAIN_CHANNELS = {
-    "mygo": "UC80p_16pSSHA8YmtCVdX51w",
-    "ave_mujica": "UCrWC59UUMETuCp9IYUdjVbg",
-    "mugendai_mutype": "UCxL_Vlnhfo46sN6vPHR_4hA",
-    "ikka_dumb_rock": "UCCMYC-gp-EQgz9scK4PLYzA",
-    "millsage": "UCvhViFXvb5Y83YGEpRX1cvg",
-}
-
-# 메인 채널 스캔 전용 화이트리스트 마커. Topic 채널(BAND_CHANNELS)이 아니라 메인 채널은
-# 노래 외 콘텐츠(생방송·잡담쇼츠·미니애니·CM 등)가 다수라 variant_tag()의 블랙리스트 방식이
-# 안전하지 않다(미인식 제목은 전부 "오리지널 곡"으로 폴스루됨). 이 마커가 제목에 있는
-# 경우만 커버곡 후보로 본다(실측 mutype 250개 업로드 전수조사에서 '歌ってみた' 정밀도 100%).
-# 2026-08-30 확장: ikka_dumb_rock의 커버 제목이 '「イケナイ太陽」 Covered by 一家Dumb Rock!'
-# 처럼 '歌ってみた' 없이 'Covered by'만 쓰는 사례 확인 → 'covered by'(대소문자 무시)와
-# 'カバー'를 마커에 추가. 'cover' 단독은 discover/cover art 등 오탐 위험이 있어 제외.
-_COVER_SERIES_MARKERS = ("歌ってみた", "カバー")
-_COVER_SERIES_MARKERS_CI = ("covered by",)   # 소문자 비교(대소문자 무시)
-
-
-def is_cover_series_title(title: str) -> bool:
-    """제목에 커버 시리즈 마커가 있으면 True (NFKC 정규화 후 부분일치)."""
-    t = unicodedata.normalize("NFKC", title or "")
-    if any(m in t for m in _COVER_SERIES_MARKERS):
-        return True
-    tl = t.lower()
-    return any(m in tl for m in _COVER_SERIES_MARKERS_CI)
+# BAND_MAIN_CHANNELS / is_cover_series_title 은 youtube_rss.py 로 이전됨(2026-09-06) —
+# 자동 감지 루프(collect_candidates)도 같은 화이트리스트로 메인 채널을 스캔하게 되면서
+# 단일 소스로 통합. 여기서는 위 import 로 그대로 재사용.
 
 
 def main():

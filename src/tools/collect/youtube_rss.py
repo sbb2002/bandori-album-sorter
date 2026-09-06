@@ -120,6 +120,39 @@ MIN_LENGTH_S = 90
 
 ISSUE_TITLE_PREFIX = "🔔 RSS 포맷 변경 의심"
 
+# 밴드의 메인(공식) 채널 — Topic 채널(BAND_CHANNELS)과 별개. 신생 밴드만 자체 업로드
+# 채널을 갖는다(backfill.py 이력 참고). mygo·ave_mujica(2026-07-25), mugendai_mutype
+# (2026-07-25), ikka_dumb_rock·millsage(2026-08-30) — 전부 YouTube Data API
+# channels.list 로 실제 채널 확인 완료. 여기 추가하기 전에 반드시 실채널 검증할 것
+# (추측 금지 — 잘못 넣으면 엉뚱한 콘텐츠가 그 밴드 데이터로 들어갈 위험).
+BAND_MAIN_CHANNELS = {
+    "mygo": "UC80p_16pSSHA8YmtCVdX51w",
+    "ave_mujica": "UCrWC59UUMETuCp9IYUdjVbg",
+    "mugendai_mutype": "UCxL_Vlnhfo46sN6vPHR_4hA",
+    "ikka_dumb_rock": "UCCMYC-gp-EQgz9scK4PLYzA",
+    "millsage": "UCvhViFXvb5Y83YGEpRX1cvg",
+}
+
+# 메인 채널 스캔 전용 화이트리스트 마커. Topic 채널이 아니라 메인 채널은 노래 외 콘텐츠
+# (생방송·잡담쇼츠·미니애니·CM 등)가 다수라 variant_tag()의 블랙리스트 방식이 안전하지
+# 않다(미인식 제목은 전부 "오리지널 곡"으로 폴스루됨) — 이 마커가 제목에 있는 경우만
+# 커버곡 후보로 본다(강제 variant='cover'). '歌ってみた'/'カバー'(실측 mutype 250개 업로드
+# 전수조사 정밀도 100%), 'covered by'(2026-08-30, ikka_dumb_rock), 'cover ver'(2026-09-06,
+# mygo — "청春コンプレックス / MyGO!!!!! cover ver." 실사례로 추가; 접미사 " ver" 동반이라
+# bare 'cover'보다 오탐 위험 낮음). bare 'cover' 단독은 discover/cover art 등 오탐 위험이
+# 있어 계속 제외.
+_COVER_SERIES_MARKERS = ("歌ってみた", "カバー")
+_COVER_SERIES_MARKERS_CI = ("covered by", "cover ver")   # 소문자 비교(대소문자 무시)
+
+
+def is_cover_series_title(title: str) -> bool:
+    """제목에 커버 시리즈 마커가 있으면 True (NFKC 정규화 후 부분일치)."""
+    t = unicodedata.normalize("NFKC", title or "")
+    if any(m in t for m in _COVER_SERIES_MARKERS):
+        return True
+    tl = t.lower()
+    return any(m in tl for m in _COVER_SERIES_MARKERS_CI)
+
 
 # ──────────────────────────────────────────────
 # Title helpers
@@ -489,6 +522,41 @@ def collect_candidates(existing_pr_ids, scrape_length=True, api_key=None):
                 "band": band, "video_id": e["video_id"], "name": e["title"],
                 "published": e["published"], "variant": variant, "length_s": length_s,
                 "url": WATCH_PAGE.format(e["video_id"]), "is_cover": variant == "cover",
+            })
+
+    # 메인 채널(자체 업로드) 커버곡 화이트리스트 스캔 — Topic 과 별개, health/anomaly
+    # 알람 체계에는 안 넣는다(메인 채널은 커버가 없는 날이 흔해 valid=0가 정상이라, 같은
+    # 알람 로직에 얹으면 매일 오탐이 남). 실패는 그냥 스킵(fail-soft), 다음 실행 재시도.
+    for band, main_channel_id in BAND_MAIN_CHANNELS.items():
+        entries, ok = fetch_feed_with_fallback(main_channel_id, api_key)
+        if not ok:
+            continue
+        valid = [e for e in entries if e["video_id"] and e["title"]]
+        known_names = names_by_band.get(band, set())
+        known_ids = ids_by_band.get(band, set())
+
+        best = {}
+        for e in valid:
+            vid, title = e["video_id"], e["title"]
+            if vid in known_ids or vid in existing_pr_ids:
+                continue
+            if not is_cover_series_title(title):
+                continue                       # 화이트리스트 미통과(생방송·잡담 등) → 스킵
+            key = norm_name(title)
+            if key in known_names:
+                continue
+            if key not in best or (e["published"] or "9999-99-99") < (best[key]["published"] or "9999-99-99"):
+                best[key] = e
+
+        for e in best.values():
+            length_s = fetch_length_seconds(e["video_id"]) if scrape_length else None
+            if length_s is not None and length_s < MIN_LENGTH_S:
+                drops.append(_drop(band, e, "length_short", variant="cover", length_s=length_s))
+                continue
+            candidates.append({
+                "band": band, "video_id": e["video_id"], "name": e["title"],
+                "published": e["published"], "variant": "cover", "length_s": length_s,
+                "url": WATCH_PAGE.format(e["video_id"]), "is_cover": True,
             })
 
     # Order: full versions first, then covers; each group oldest -> newest.
